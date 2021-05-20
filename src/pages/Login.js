@@ -56,7 +56,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Login = ({ setAuthenticator, user }) => {
+const Login = ({ setAuthenticator, users }) => {
   const classes = useStyles();
   const [name, setName] = useState();
   const [password, setPassword] = useState();
@@ -65,12 +65,15 @@ const Login = ({ setAuthenticator, user }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     //  console.log(name, password)
-    if (user.name === name && user.password === password) {
-      setAuthenticator(true);
-    } else {
-      //  alert('Incorrect username or password')
-      setToggler(true);
-    }
+
+    users.forEach((user) => {
+      if (user.name === name && user.password === password) {
+        setAuthenticator(true);
+      } else {
+        //  alert('Incorrect username or password')
+        setToggler(true);
+      }
+    });
   };
 
   return (

@@ -16,15 +16,21 @@ function App() {
   });
 
   const [authenticator, setAuthenticator] = useState(false);
-  const [user, setUsers] = useState({
-    name: "mohammad",
-    password: "1234",
-  });
+  const [users, setUsers] = useState([
+    {
+      name: "mohammad",
+      password: "1234",
+    },
+    {
+      name : 'abdullah',
+      password : '4321'
+    }
+  ]);
 
   return (
     <>
       {!authenticator && (
-        <Login user={user} setAuthenticator={setAuthenticator} />
+        <Login users={users} setAuthenticator={setAuthenticator} />
       )}
       {authenticator && (
         <ThemeProvider theme={theme}>
